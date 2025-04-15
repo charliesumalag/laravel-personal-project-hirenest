@@ -5,9 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <title>Laravel Job Board</title>
+        <script src="//unpkg.com/alpinejs" defer></script>
         @vite('resources/css/app.css')
     </head>
-    <body class="mx-auto max-w-100 bg-slate-200 text-slate-700">
+    <body class="mx-auto max-w-100 bg-white text-slate-700">
         @yield('content')
     </body>
 </html>
