@@ -40,7 +40,7 @@
             ];
         @endphp
         <div class="w-full flex justify-center">
-            <x-section-header-par class="w-[40%] flex-col justify-center"
+            <x-section-header-par class="w-[40%] flex-col items-center justify-center"
                 headerText="In Demand Opportunities"
                 headerPar="Explore a wide range of open tech positions — from software engineering to product design. Get personalized salary insights based on your skills, and read reviews from over 30,000+ tech companies worldwide."
             />
@@ -79,25 +79,23 @@
                 />
                 <ul class="mt-10 text-gray-500 flex gap-3">
                     <x-home-section-list-card :lists="['Tech Career Solutions for the Future. ', 'Backed by a Talented Team of Industry Experts', 'UI/UX Designer', 'Tailor Your Job Search to Fit Your Tech Skills']" />
-
-                    {{-- <div class="flex gap-4 items-center">
-                        <i class="fa-solid fa-circle-check text-blue-500"></i>
-                        <li>Tech Career Solutions for the Future. </li>
-                    </div>
-                    <div class="flex gap-4 items-center">
-                        <i class="fa-solid fa-circle-check text-blue-500"></i>
-                        <li>Backed by a Talented Team of Industry Experts</li>
-                    </div>
-                    <div class="flex gap-4 items-center">
-                        <i class="fa-solid fa-circle-check text-blue-500"></i>
-                        <li>Tailor Your Job Search to Fit Your Tech Skills</li>
-                    </div> --}}
                 </ul>
             </div>
         </div>
-
     </x-section>
-
+    <x-section class="mt-36 text-center">
+        <div class="w-full flex justify-center text-center">
+            <x-section-header-par class="flex-col justify-center items-center w-[30%]"
+                headerText="Popular Job Listing"
+                headerPar="Discover a wide variety of open positions. Get a tailored salary estimate based on your skills and experience. Read reviews from over 30,000+ companies globally."
+            />
+        </div>
+        <div class="mt-10 gap-6 flex flex-col w-[1200px] mx-auto">
+            @foreach ($jobs as $job)
+                <x-job-card :job="$job"/>
+            @endforeach
+        </div>
+    </x-section>
     <div class="mt-[20rem]">
     </div>
 @endsection
