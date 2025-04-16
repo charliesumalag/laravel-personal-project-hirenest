@@ -5,5 +5,4 @@
             <li>{{$list}} </li>
         </div>
     @endforeach
-
 </div>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <x-section class="relative h-screen bg-cover bg-center overflow-hidden mb-4" style="background-image: linear-gradient(to top, rgba(0, 0, 220, 0.5), rgba(0, 0, 0, 0.7)), url('{{ asset('images/homepage/hero.jpg') }}')" >
+    <x-section id="top" class="relative h-screen bg-cover bg-center overflow-hidden mb-4" style="background-image: linear-gradient(to top, rgba(0, 0, 220, 0.5), rgba(0, 0, 0, 0.7)), url('{{ asset('images/homepage/hero.jpg') }}')" >
         <x-navbar  id="navbar"  class="z-30 flex mx-auto p-5 w-full fixed transition duration-[800ms] ease-in-out "></x-navbar>
         <div class="text-white absolute inset-0 flex flex-col items-center justify-center text-center font-sans -tracking-tight z-10">
             <div class="flex flex-col items-center gap-2">
@@ -67,7 +67,7 @@
         </div>
     </x-section>
     <x-section class="mt-32 w-[1200px]">
-        <div class="flex w-[100%] gap-4">
+        <div class="flex max-w-[1200px] mx-auto gap-4">
             <div class="w-[50%] h-[600px] bg-white relative" >
                 <img src="{{ asset('images/homepage/coder2.jpg') }}" class="absolute top-0 left-0 w-[75%] h-[90%] rounded-xl z-10" alt="">
                 <img src="{{ asset('images/homepage/coder.jpg') }}" class="absolute bottom-0 right-16 h-[300px] z-20 border-8 shadow-md rounded-xl border-white " alt="">
@@ -95,7 +95,57 @@
                 <x-job-card :job="$job"/>
             @endforeach
         </div>
+        <div class="mt-6">
+            <div class="relative inline-block group text-blue-600 font-thin">
+                <a href="#" class="text-gray-400 text-base">See more jobs <i class="fa-solid fa-arrow-right px-2"></i></a>
+                <span class="absolute left-0 bottom-[-5px] h-[1px] w-0 bg-blue-600 transition-all duration-300 group-hover:w-[95%]"></span>
+            </div>
+        </div>
     </x-section>
-    <div class="mt-[20rem]">
-    </div>
+
+    <x-section class="mt-32 w-[1200px]">
+        <div class="flex max-w-[1200px] flex-row-reverse mx-auto gap-4">
+            <div class="w-[50%] h-[600px] bg-white relative" >
+                <img src="{{ asset('images/homepage/office.jpg') }}" class="absolute top-0 right-0 w-[75%] h-[90%] rounded-xl z-10" alt="">
+                <img src="{{ asset('images/homepage/office1.jpg') }}" class="absolute bottom-0 left-16 h-[300px] z-20 border-8 shadow-md rounded-xl border-white " alt="">
+            </div>
+            <div class="w-[50%] h-[600px] flex items-start justify-center flex-col">
+                <x-section-header-par class="flex-col"
+                    headerText=" Discover Top Companies"
+                    headerPar="Explore leading employers and uncover opportunities that align with your career goals. See what makes these companies stand out."
+                />
+                <ul class="mt-10 text-gray-500 w-full grid grid-cols-2 gap-4">
+                    @foreach ($bestCompanies as $company)
+                        <x-best-company-card></x-best-company-card>
+                    @endforeach
+                </ul>
+                <div class="mt-6">
+                    <div class="relative inline-block group text-blue-600 font-thin">
+                        <a href="#" class="text-gray-400 text-base">See more companies <i class="fa-solid fa-arrow-right px-2"></i></a>
+                        <span class="absolute left-0 bottom-[-5px] h-[1px] w-0 bg-blue-600 transition-all duration-300 group-hover:w-[95%]"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </x-section>
+    <x-section class="mt-36 text-center">
+        <div class="w-full flex justify-center">
+            <x-section-header-par class="w-[40%] flex-col items-center justify-center"
+                headerText="Latest Blog or News"
+                headerPar="Stay informed with the latest job trends, career tips, and industry news. Get expert advice and explore opportunities that match your skills and goals."
+            />
+        </div>
+        @php
+            $images = ['workmates1', 'workmates2','workmates3'];
+        @endphp
+        <div class="flex items-center justify-between w-[1400px] mx-auto mt-16">
+            <div class="w-full mx-auto max-w-[1200px]">
+                <div class="grid grid-cols-3 gap-12">
+                    @foreach ($images as $image)
+                        <x-latest-blog-news-card :image="$image"/>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </x-section>
 @endsection
