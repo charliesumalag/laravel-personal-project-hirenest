@@ -1,4 +1,4 @@
-<div class="flex items-center bg-gray-100 gap-2 rounded-lg px-4 py-4">
+<div class="flex items-center bg-white gap-2 rounded-lg px-4 py-4">
     <div class="p-3 bg-white rounded-lg">
         <img src="{{asset('images/homepage/logo.png') }}" alt="Company Logo" class="w-6 h-6">
     </div>

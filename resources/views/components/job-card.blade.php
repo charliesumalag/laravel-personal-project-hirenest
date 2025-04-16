@@ -1,4 +1,4 @@
-<div class="p-10 flex rounded-xl justify-between items-center text-left border border-gray-100 cursor-pointer transition-transform duration-300 transform hover:-translate-y-3 hover:shadow-lg">
+<div class=" p-10 flex rounded-xl justify-between items-center text-left bg-white cursor-pointer transition-transform duration-300 transform hover:-translate-y-3 hover:shadow-lg">
     <h4 class="w-[35%] font-semibold">{{$job->title}}</h4>
     <div class="flex flex-col items-start w-[15%]">
         <p class="text-blue-300 px-2 text-[10px] p-2 bg-gray-50 font-semibold rounded-lg">Full Time</p>

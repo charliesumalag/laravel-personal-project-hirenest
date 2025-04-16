@@ -2,7 +2,7 @@
     <div class="w-full overflow-hidden">
         <img src="{{asset($image) }}" alt="" class="w-full h-[270px] transition-transform duration-300 ease-in-out transform hover:scale-110 rounded">
     </div>
-    <div class="w-full flex flex-col gap-4 px-8 py-10">
+    <div class="w-full bg-white flex flex-col gap-4 px-8 py-10">
         <div class="flex gap-2 text-gray-400 font-thin text-sm">
             <p class="">13th Feb 2025</p>
             <p>4 Comments</p>

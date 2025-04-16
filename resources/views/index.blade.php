@@ -8,21 +8,28 @@
                 <h1 class="text-5xl font-bold w-4/12 text-gray-300 leading-tight">Where tech careers take flight</h1>
                 <p class="w-7/12 leading-7 text-xl text-gray-400">Discover top opportunities in development, design, data, and more. Hirenest connects tech talent with companies that move fast and build big.</p>
             </div>
-            <form class="mt-8 bg-white rounded-lg flex px-4 py-2 gap-2">
+            <form class="mt-8 bg-[#F0F3FA] rounded-lg flex px-4 py-2 gap-2">
                 <div>
                     <i class="fa-solid fa-magnifying-glass text-blue-500"></i>
-                    <input type="text" placeholder="search" class="font-semibold border-0 h-16 px-2 text-gray-500 font-sans focus:outline-none">
+                    <input type="text" placeholder="search job" class="border-0 h-16 px-2 text-gray-500 bg-[#F0F3FA] font-sans focus:outline-none">
                 </div>
                 <div class="border-0 border-l-gray-300 border-l-2 px-2 flex items-center">
                     <i class="fa-solid fa-location-dot text-blue-400 text-lg" ></i>
-                    <input type="text" placeholder="select" class="font-semibold focus:outline-none h-16 px-2 text-gray-500 font-sans">
+                    <input type="text" placeholder="search location" class="bg-[#F0F3FA] focus:outline-none h-16 px-2 text-gray-500 font-sans">
                 </div>
                 <div class="border-0 border-l-gray-300 border-l-2  flex items-center px-2">
                     <i class="fa-solid fa-suitcase text-blue-500"></i>
-                    <input type="text" class="font-semibold px-2 text-gray-500 h-16 font-sans focus:outline-none" placeholder="select">
+                    <select class="px-2 border-0 h-16 w-52 text-gray-400 outline-none bg-[#F0F3FA]">
+                        <option value=""  disabled selected>Select Job Type</option>
+                        <option class="text-gray-700 font-sans">Full Time</option>
+                        <option class="text-gray-700">Part Time</option>
+                        <option class="text-gray-700">Remote Work</option>
+                        <option class="text-gray-700">Freelance</option>
+                    </select>
+                    {{-- <input type="text" class="font-semibold px-2 text-gray-500 h-16 font-sans focus:outline-none" placeholder="select"> --}}
                 </div>
                 <div class="bg-blue-500 flex items-center rounded-lg transition-all duration-400 ease-in hover:bg-blue-700 cursor-pointer">
-                    <button class="h-10 px-16 rounded-md font-bold" type="submit">Search</button>
+                    <button class="h-10 px-16 rounded-md font-bold text-[#F0F3FA]" type="submit">Search</button>
                 </div>
             </form>
         </div>
@@ -68,9 +75,9 @@
     </x-section>
     <x-section class="mt-32 w-[1200px]">
         <div class="flex max-w-[1200px] mx-auto gap-4">
-            <div class="w-[50%] h-[600px] bg-white relative" >
+            <div class="w-[50%] h-[600px] relative" >
                 <img src="{{ asset('images/homepage/coder2.jpg') }}" class="absolute top-0 left-0 w-[75%] h-[90%] rounded-xl z-10" alt="">
-                <img src="{{ asset('images/homepage/coder.jpg') }}" class="absolute bottom-0 right-16 h-[300px] z-20 border-8 shadow-md rounded-xl border-white " alt="">
+                <img src="{{ asset('images/homepage/coder.jpg') }}" class="absolute bottom-0 right-16 h-[300px] z-20 border-8 shadow-md rounded-xl border-[#F0F3FA] " alt="">
             </div>
             <div class="w-[50%] h-[600px] flex items-start justify-center flex-col">
                 <x-section-header-par class="flex-col"
@@ -105,9 +112,9 @@
 
     <x-section class="mt-32 w-[1200px]">
         <div class="flex max-w-[1200px] flex-row-reverse mx-auto gap-4">
-            <div class="w-[50%] h-[600px] bg-white relative" >
+            <div class="w-[50%] h-[600px] relative" >
                 <img src="{{ asset('images/homepage/office.jpg') }}" class="absolute top-0 right-0 w-[75%] h-[90%] rounded-xl z-10" alt="">
-                <img src="{{ asset('images/homepage/office1.jpg') }}" class="absolute bottom-0 left-16 h-[300px] z-20 border-8 shadow-md rounded-xl border-white " alt="">
+                <img src="{{ asset('images/homepage/office1.jpg') }}" class="absolute bottom-0 left-16 h-[300px] z-20 border-8 shadow-md rounded-xl border-[#F0F3FA] " alt="">
             </div>
             <div class="w-[50%] h-[600px] flex items-start justify-center flex-col">
                 <x-section-header-par class="flex-col"
