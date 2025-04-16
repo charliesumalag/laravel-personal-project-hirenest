@@ -11,5 +11,5 @@ class Job extends Model
     use HasFactory;
 
     public static array $experience = ['entry', 'intermediate', 'senior'];
-    public static array $category = ['IT', 'Finance', 'Sales', 'Marketing'];
+    public static array $jobtypes = ['Full Time', 'Part Time', 'Remote', 'Freelance'];
 }

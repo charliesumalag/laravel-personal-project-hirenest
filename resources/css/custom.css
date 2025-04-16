@@ -8,3 +8,17 @@
 .logospanscrol{
     color: white;
 }
+.menu{
+    color: #BDBDBD;
+    transition: all 0.3s ease-in-out;
+}
+.menu:hover{
+    color:white;
+}
+.menuScroll{
+    transition: all 0.3s ease-in-out;
+    color: #242424;
+}
+.menuScroll:hover{
+    color: #2196F3;
+}

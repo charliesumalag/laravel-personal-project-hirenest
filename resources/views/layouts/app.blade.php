@@ -7,8 +7,12 @@
         <title>Laravel Job Board</title>
         @vite(['resources/css/app.css','resources/css/custom.css', 'resources/js/app.js'])
     </head>
-    <body class="min-h-screen mx-auto max-w-100 bg-[#F0F3FA] text-slate-700">
-        @yield('content')
+
+    <body class="min-h-screen flex flex-col mx-auto max-w-100 bg-[#F0F3FA] text-slate-700">
+
+        <main class="flex-grow">
+            @yield('content')
+        </main>
 
         <footer class="w-full mt-32 mx-auto text-white bg-[#202942] flex flex-col justify-between  items-center py-12 h-[200px] relative">
             <div class="w-[1440px] flex justify-between items-center">
