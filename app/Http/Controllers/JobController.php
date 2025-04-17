@@ -24,9 +24,7 @@ class JobController extends Controller
             $query->where('jobtypes', 'like', '%' . $request->jobtype . '%');
         }
 
-
-
-        $jobs = $query->paginate(8);
+        $jobs = $query->latest()->paginate(10);
         return view('jobs.index', [
             'jobs' => $jobs,
         ]);
@@ -45,7 +43,19 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'location' => 'required|string|max:255',
+            'company' => 'required|string|max:255',
+            'salary' => 'nullable|numeric',
+            'experience' => 'required|string',
+            'jobtypes' => 'required|string',
+        ]);
+
+        Job::create($validated);
+        return redirect()->route('jobs.index')->with('success', 'Job posted successfully!');
     }
 
     /**

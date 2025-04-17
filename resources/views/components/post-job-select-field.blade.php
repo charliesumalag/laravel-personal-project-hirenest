@@ -1,10 +1,10 @@
 <div class="w-full flex flex-col gap-1">
-    <label for="" class="uppercase text-xs font-bold text-gray-400">{{$label}}</label>
-    <select name="" id="" class=" border h-8 outline-none text-sm px-2 py-4 text-gray-400 rounded-sm">
-        {{$slot}}
-        {{-- <option value="">Full Time</option>
-        <option value="">Part Time</option>
-        <option value="">Remote</option>
-        <option value="">Freelance</option> --}}
+    <label for="{{ $name }}" class="uppercase text-xs font-bold text-gray-400">{{ $label }}</label>
+    <select name="{{ $name }}" id="{{ $name }}" class="border h-16 outline-none text-sm px-2 text-black rounded-sm">
+        @foreach ($options as $value => $label)
+            <option value="{{ $value }}" {{ old($name) == $value ? 'selected' : '' }}>
+                {{ $label }}
+            </option>
+        @endforeach
     </select>
 </div>

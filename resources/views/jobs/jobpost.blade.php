@@ -16,33 +16,56 @@
         </div>
     </x-section>
     <div class="w-full pt-20 flex flex-col items-center">
-        <form class="w-[700px] bg-white p-8 flex flex-col gap-6 rounded-md">
-            <h2 for="" class="mb-4 text-xl">Job Details</h2>
-            <x-post-job-input-field label="Job Title"/>
+        <form method="POST" action="{{ route('jobs.store') }}" class="w-[1000px] bg-white p-8 flex flex-col gap-6 rounded-md">
+            @csrf
+            <h2 for="" class="mb-4 text-2xl">Job Details</h2>
+            <x-post-job-input-field label="Job Title" name="title"/>
+            @error('title')
+                <div class="alert alert-danger text-red-500">{{ $message }}</div>
+            @enderror
+            <x-post-job-input-field label="Company" name="company"/>
+            @error('title')
+                <div class="alert alert-danger text-red-500">{{ $message }}</div>
+            @enderror
             <div class="w-full flex gap-4 items-center justify-between">
-                <x-post-job-select-field label="Job Categories">
-                    <option value="">Full Time</option>
-                    <option value="">Part Time</option>
-                    <option value="">Remote</option>
-                    <option value="">Freelance</option>
+                <x-post-job-select-field name="jobtypes" label="Job Type" :options="[
+                    'Full Time' => 'Full Time',
+                    'Part Time' => 'Part time',
+                    'Remote' => 'Remote',
+                    'Freelance' => 'Freelance']">
                 </x-post-job-select-field>
-                <x-post-job-select-field label="Experience">
-                    <option value="">Entry</option>
-                    <option value="">Intermediate</option>
-                    <option value="">Senior</option>
+                <x-post-job-select-field label="Experience" name="experience" :options="[
+                    'Entry' => 'Entry',
+                    'Intermediate' => 'Intermediate',
+                    'Senior' => 'Senior']">
                 </x-post-job-select-field>
+                @error('jobtypes')
+                <div class="alert alert-danger text-red-500">{{ $message }}</div>
+                @enderror
+                @error('experience')
+                    <div class="alert alert-danger text-red-500">{{ $message }}</div>
+                @enderror
             </div>
             <div class="flex flex-col gap-1">
                 <label for="" class="uppercase text-xs font-bold text-gray-400">Job Description</label>
-                <textarea name="" id="" class="w-full border h-32  py-4 outline-none text-sm p-2 text-gray-400 rounded-sm"></textarea>
+                <textarea name="description" id="" class="w-full border h-32  py-4 outline-none text-sm p-2 text-black rounded-sm">{{ old('description') }}</textarea>
             </div>
+            @error('description')
+                <div class="alert alert-danger text-red-500">{{ $message }}</div>
+            @enderror
             <div class="w-full flex gap-4 items-center justify-between">
-                <x-post-job-input-field label="Job Location"/>
-                <x-post-job-input-field label="Salary"/>
+                <x-post-job-input-field label="Job Location" name="location"/>
+                <x-post-job-input-field label="Salary" name="salary"/>
             </div>
+            @error('salary')
+                <div class="alert alert-danger text-red-500">{{ $message }}</div>
+            @enderror
+            @error('location')
+                <div class="alert alert-danger text-red-500">{{ $message }}</div>
+            @enderror
             <div class="text-right flex justify-end gap-4">
-                <button class="border px-6 py-2 rounded-lg text-sm transition-all duration-300 ease-in-out hover:bg-gray-100">Cancel</button>
-                <button class="bg-blue-500 rounded-lg px-6 py-2 text-white text-sm transition-all duration-300 ease-in-out hover:bg-blue-600">Create</button>
+                <button class="border px-12 py-3 rounded-lg text-sm transition-all duration-300 ease-in-out hover:bg-gray-100">Cancel</button>
+                <button class="px-12 py-3 bg-blue-500 rounded-lg text-white text-sm transition-all duration-300 ease-in-out hover:bg-blue-600">Create</button>
             </div>
         </form>
     </div>

@@ -9,12 +9,14 @@ use Illuminate\View\Component;
 class PostJobInputField extends Component
 {
     public $label;
+    public $name;
     /**
      * Create a new component instance.
      */
-    public function __construct($label)
+    public function __construct($label = null, $name = null)
     {
         $this->label = $label;
+        $this->name = $name;
     }
 
     /**

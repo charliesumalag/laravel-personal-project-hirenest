@@ -9,12 +9,16 @@ use Illuminate\View\Component;
 class PostJobSelectField extends Component
 {
     public $label;
+    public $name;
+    public $options;
     /**
      * Create a new component instance.
      */
-    public function __construct($label)
+    public function __construct($label = null, $name = null, $options = [])
     {
         $this->label = $label;
+        $this->name = $name;
+        $this->options = $options;
     }
 
     /**
