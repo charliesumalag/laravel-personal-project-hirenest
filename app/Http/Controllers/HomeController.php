@@ -11,7 +11,7 @@ class HomeController extends Controller
     public function index()
     {
         $bestCompanies = Job::query()->limit(6)->get();
-        $jobs = Job::query()->limit(8)->get();
+        $jobs = Job::query()->latest()->limit(8)->get();
         return view('index', [
             'jobs' => $jobs,
             'bestCompanies' => $bestCompanies,

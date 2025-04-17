@@ -8,7 +8,7 @@
         @vite(['resources/css/app.css','resources/css/custom.css', 'resources/js/app.js'])
     </head>
 
-    <body class="min-h-screen flex flex-col mx-auto max-w-100 bg-[#F0F3FA] text-slate-700">
+    <body class="min-h-screen flex flex-col mx-auto max-w-100 bg-[#F0F3FA] text-slate-700 leading-loose">
 
         <main class="flex-grow">
             @yield('content')

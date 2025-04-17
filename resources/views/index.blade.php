@@ -77,8 +77,10 @@
             />
         </div>
         <div class="mt-10 gap-6 flex flex-col w-[1200px] mx-auto">
-            @foreach ($jobs as $job)
-                <x-job-card :job="$job"/>
+             @foreach ($jobs as $job)
+                <a href="{{ route('jobs.show', ['job'=>$job->id]) }}">
+                    <x-job-card :job="$job"/>
+                </a>
             @endforeach
         </div>
         <div class="mt-6">

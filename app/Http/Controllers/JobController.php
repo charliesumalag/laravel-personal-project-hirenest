@@ -61,9 +61,20 @@ class JobController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Job $job, Request $request)
     {
-        //
+        $activeJobTitle = $job->title; // This is the title of the active job
+
+        $jobsSimilar = Job::query()
+            ->where('title', 'like', '%' . $activeJobTitle . '%')  // Match similar titles
+            ->where('id', '!=', $job->id)  // Exclude the current active job
+            ->latest()
+            ->limit(2)
+            ->get();
+        return view('jobs.jobdetail', [
+            'job' => $job,
+            'similars' => $jobsSimilar,
+        ]);
     }
 
     /**

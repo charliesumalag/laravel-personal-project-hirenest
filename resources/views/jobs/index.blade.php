@@ -21,7 +21,9 @@
                 </div>
             @endif
             @foreach ($jobs as $job)
-                <x-job-card :job="$job"/>
+                <a href="{{ route('jobs.show', ['job'=>$job->id]) }}">
+                    <x-job-card :job="$job"/>
+                </a>
             @endforeach
             {{ $jobs->links('pagination::tailwind') }}
         </div>

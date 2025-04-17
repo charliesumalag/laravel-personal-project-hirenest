@@ -16,7 +16,7 @@
                     <a href="/profile" class="px-4 transition-all duration-300 ease-in-out hover:text-gray-100">Profile</a>
                     <a href="/logout" class="px-4 transition-all duration-300 ease-in-out hover:text-gray-100">Logout</a>
                 @else
-                    <a href="{{ route('create') }}"  class="px-6 py-2 text-sm border-none rounded-md bg-blue-500 font-medium text-white uppercase tracking-wide transition-all duration-300 ease-in-out hover:bg-blue-600">Post a Job</a>
+                    <a  href="{{ route('create') }}"  class="px-6 py-2 text-xs rounded-md border  border-white font-medium text-white uppercase tracking-wide transition-all duration-300 ease-in-out hover:bg-white hover:text-black">Post a Job</a>
                 @endauth
             </ul>
 

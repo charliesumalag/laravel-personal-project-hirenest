@@ -10,7 +10,7 @@
         <div class="absolute text-white text-sm tracking-widest bottom-4 left-[50%] translate-x-[-50%] z-20">
             <a href="{{ route('homepage') }}" class="hover:text-white text-gray-300 font-semibold font-sans transition-all duration-300 ease-in-out"><span class="">HIRENEST</span></a>
             <i class="fa-solid fa-arrow-right text-gray-300 px-4"></i>
-            <a href="#" class="hover:text-white text-gray-300 font-semibold font-sans transition-all duration-300 ease-in-out"><span>JOB</span></a>
+            <a href="{{ route('jobs.index') }}" class="hover:text-white text-gray-300 font-semibold font-sans transition-all duration-300 ease-in-out"><span>JOB</span></a>
             <i class="fa-solid fa-arrow-right text-gray-300 px-4"></i>
             <span class="text-white font-semibold font-sans">JOB POST</span>
         </div>
