@@ -31,39 +31,43 @@
                 referrerpolicy="no-referrer-when-downgrade"
                 src="https://www.google.com/maps?q={{ urlencode($job->location) }}&output=embed">
             </iframe>
-                <div class="flex flex-col gap-2 ">
-                    <h4 class="font-semibold text-lg mb-2">Similar Jobs</h4>
-                    <div class="flex gap-4">
-                        @foreach ($similars as $similar)
-                            <a href="{{ route('jobs.show', ['job' => $similar->id]) }}" class="w-1/2">
-                                <div class="flex flex-col h-full shadow-[0_0_10px_rgba(0,0,0,0.15)] border-none rounded-md transition-all duration-300 ease-in-out hover:-translate-y-1 cursor-pointer">
+            @if ($similars->count())
+            <div class="flex flex-col gap-2">
+                <h4 class="font-semibold text-lg mb-2">Similar Jobs</h4>
+                <div class="flex gap-4">
+                    @foreach ($similars as $similar)
+                        <a href="{{ route('jobs.show', ['job' => $similar->id]) }}" class="w-1/2">
+                            <div class="flex flex-col h-full shadow-[0_0_10px_rgba(0,0,0,0.15)] border-none rounded-md transition-all duration-300 ease-in-out hover:-translate-y-1 cursor-pointer">
 
-                                    {{-- Top Section --}}
-                                    <div class="flex gap-2 items-center py-6 px-4">
-                                        <img src="{{ asset('images/homepage/logo.png') }}" alt="" class="w-6 h-6">
-                                        <div class="text-[15px]">
-                                            <h5 class="text-gray-500 text-sm">{{ $similar->title }}</h5>
-                                            <p class="text-sm">{{ $similar->company }}</p>
-                                        </div>
+                                {{-- Top Section --}}
+                                <div class="flex gap-2 items-center py-6 px-4">
+                                    <img src="{{ asset('images/homepage/logo.png') }}" alt="" class="w-6 h-6">
+                                    <div class="text-[15px]">
+                                        <h5 class="text-gray-500 text-sm">{{ $similar->title }}</h5>
+                                        <p class="text-sm">{{ $similar->company }}</p>
                                     </div>
-
-                                    {{-- Spacer to push the bottom section down --}}
-                                    <div class="flex-grow"></div>
-
-                                    {{-- Bottom Section --}}
-                                    <div class="grid grid-cols-2 p-6 bg-[#F0F0F0]">
-                                        <p class="text-sm text-gray-500">{{ $similar->location }}</p>
-                                        <p class="text-sm text-gray-500">{{ $similar->jobtypes }}</p>
-                                        <p class="text-sm text-gray-500">{{ number_format($similar->salary) }}</p>
-                                        <p class="text-sm text-gray-500">{{ $similar->created_at->diffForHumans() }}</p>
-                                    </div>
-
                                 </div>
-                            </a>
-                        @endforeach
-                    </div>
 
+                                {{-- Spacer --}}
+                                <div class="flex-grow"></div>
+
+                                {{-- Bottom Section --}}
+                                <div class="grid grid-cols-2 p-6 bg-[#F0F0F0]">
+                                    <p class="text-sm text-gray-500">{{ $similar->location }}</p>
+                                    <p class="text-sm text-gray-500">{{ $similar->jobtypes }}</p>
+                                    <p class="text-sm text-gray-500">{{ number_format($similar->salary) }}</p>
+                                    <p class="text-sm text-gray-500">{{ $similar->created_at->diffForHumans() }}</p>
+                                </div>
+
+                            </div>
+                        </a>
+                    @endforeach
                 </div>
+            </div>
+        @else
+            {{-- Optional fallback text --}}
+            <p class="text-gray-500 text-sm italic">No similar jobs found.</p>
+        @endif
             </div>
             <div class="flex flex-col gap-8 px-6 py-12">
                 <div>

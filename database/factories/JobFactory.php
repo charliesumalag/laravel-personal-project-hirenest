@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Job;
+use App\Models\User;
 use League\CommonMark\Node\Block\Paragraph;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -25,7 +26,8 @@ class JobFactory extends Factory
             'location' => fake()->city(),
             'jobtypes' => fake()->randomElement(Job::$jobtypes),
             'experience' => fake()->randomElement(Job::$experience),
-            'company' => fake()->company(),
+            'company_id' => \App\Models\Company::factory(),
+            'posted_by' => User::inRandomOrder()->first()->id,
         ];
     }
 }

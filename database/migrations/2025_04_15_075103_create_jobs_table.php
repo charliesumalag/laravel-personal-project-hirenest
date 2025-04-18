@@ -17,11 +17,17 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->unsignedInteger('salary');
-            $table->string('location');
+            $table->string('location')->nullable();
             $table->string('jobtypes');
             $table->enum('experience', Job::$experience);
-            $table->string('company');
+            $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('posted_by');
+            $table->timestamp('posted_at')->useCurrent();
+            $table->timestamp('closing_at')->nullable();
             $table->timestamps();
+
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->foreign('posted_by')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
