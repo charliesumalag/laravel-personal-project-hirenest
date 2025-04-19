@@ -22,15 +22,15 @@
                     <div class="alert alert-danger text-red-500">{{ $message }}</div>
                 @enderror
             </div>
-            <a href="#" class="mt-2 bg-blue-600 text-white px-2 py-1 flex items-center justify-center rounded-md transition duration-300 ease-in-out cursor-pointer hover:bg-blue-800">
+            <div class="mt-2 bg-blue-600 text-white px-2 py-1 flex items-center justify-center rounded-md transition duration-300 ease-in-out cursor-pointer hover:bg-blue-800">
                 <button type="submit">Login</button>
-            </a>
-            <p class="text-gray-400 font-thin text-sm">Don't have an account? <a href="#" class="font-semibold text-blue-500 px-1">Sign Up</a></p>
-            @if (session('success'))
-            <div id="flash-message" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4 transition">
-                {{ session('success') }}
-        </div>
-        @endif
+            </div>
+            <p class="text-gray-400 font-thin text-sm">Don't have an account? <a href="{{ route('auth.create') }}" class="font-semibold text-blue-500 px-1">Sign Up</a></p>
+            @if (session('message'))
+                <p id="flash-message" class="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative text-sm mb-4">
+                    {{ session('message') }}
+                </p>
+            @endif
         </form>
     </div>
 </div>

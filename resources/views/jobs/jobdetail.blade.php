@@ -5,6 +5,7 @@
         <x-navbar  id="navbar"  class="z-30 flex fixed mx-auto p-5 w-full transition duration-[800ms] ease-in-out "></x-navbar>
         <div class="text-white absolute inset-0 flex flex-col items-center justify-center text-center font-sans -tracking-tight z-10 mt-32">
             <h1 class="text-3xl font-bold text-white font-sans">{{$job->title}}</h1>
+            <p class="text-gray-300">{{$job->company}}</p>
             </div>
         </div>
         <div class="absolute text-white text-sm tracking-widest bottom-4 left-[50%] translate-x-[-50%] z-20">

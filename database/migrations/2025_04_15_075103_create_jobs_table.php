@@ -18,9 +18,10 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->unsignedInteger('salary');
             $table->string('location')->nullable();
+            $table->string('company');
             $table->string('jobtypes');
             $table->enum('experience', Job::$experience);
-            $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('company_id')->nullable();
             $table->unsignedBigInteger('posted_by');
             $table->timestamp('posted_at')->useCurrent();
             $table->timestamp('closing_at')->nullable();

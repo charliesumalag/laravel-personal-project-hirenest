@@ -16,5 +16,6 @@ Route::get('/login', [Authentication::class, 'login'])->name('auth.login');
 
 Route::post('/signup', [Authentication::class, 'store'])->name('auth.store');
 Route::post('/login',  [Authentication::class, 'authenticate'])->name('auth.authenticate');
+Route::post('/logout', [Authentication::class, 'logout'])->name('auth.logout');
 
 Route::post('/jobs', [JobController::class, 'store'])->name('jobs.store');

@@ -65,7 +65,7 @@ class Authentication extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('message', 'You have been logout.');
+        return redirect('/login')->with('message', 'You have been logout.');
     }
     /**
      * Display the specified resource.

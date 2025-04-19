@@ -53,6 +53,8 @@ class JobController extends Controller
             'experience' => 'required|string',
             'jobtypes' => 'required|string',
         ]);
+        $validated['posted_by'] = auth()->id();
+
 
         Job::create($validated);
         return redirect()->route('jobs.index')->with('success', 'Job posted successfully!');

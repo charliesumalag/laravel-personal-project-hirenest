@@ -16,9 +16,11 @@
                             Post a Job
                         </a>
                     @endif
-
                     <a href="/profile" class="uppercase tracking-wider transition-all duration-300 ease-in-out hover:text-gray-100">Profile</a>
-                    <a href="/logout" class="uppercase tracking-wider transition-all duration-300 ease-in-out hover:text-gray-100">Logout</a>
+                    <form method="POST" action="{{ route('auth.logout') }}">
+                        @csrf
+                        <button type="submit" class="uppercase tracking-wider transition-all duration-300 ease-in-out hover:text-gray-100">Logout</button>
+                    </form>
                 @else
                     <a href="{{ route('auth.login') }}" class="uppercase tracking-wider transition-all duration-300 ease-in-out hover:text-gray-100">Login</a>
                 @endauth

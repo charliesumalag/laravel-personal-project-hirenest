@@ -24,7 +24,7 @@
                 <div class="alert alert-danger text-red-500">{{ $message }}</div>
             @enderror
             <x-post-job-input-field label="Company" name="company"/>
-            @error('title')
+            @error('company')
                 <div class="alert alert-danger text-red-500">{{ $message }}</div>
             @enderror
             <div class="w-full flex gap-4 items-center justify-between">
