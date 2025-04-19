@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\f;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 class Authentication extends Controller
 {
@@ -25,13 +28,23 @@ class Authentication extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|min:3',
+            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'password' => 'required|confirmed|min:3',
+            'role' => 'required',
+        ]);
+
+        $validated['password'] = bcrypt($validated['password']);
+        $user  = User::create($validated);
+
+        return redirect()->back()->with('success', 'Account created successfully!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(f $f)
+    public function show()
     {
         //
     }
@@ -39,7 +52,7 @@ class Authentication extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(f $f)
+    public function edit()
     {
         //
     }
@@ -47,7 +60,7 @@ class Authentication extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, f $f)
+    public function update(Request $request,)
     {
         //
     }
@@ -55,7 +68,7 @@ class Authentication extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(f $f)
+    public function destroy()
     {
         //
     }

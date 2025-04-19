@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const logoText = document.getElementById('logotext');
     const logoSpanText = document.getElementById('logospantext');
     const navMenu = document.querySelectorAll('#nav-menu');
+    const flashMessage = document.getElementById('flash-message');
     window.addEventListener("scroll", function () {
         if (window.scrollY > 50) {
             navMenu.forEach(menu => {
@@ -22,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
             logoSpanText.classList.remove('logospanscrol');
         }
     });
+    // user type select
     const select = document.getElementById('userType');
     select.addEventListener('change', function () {
       if (select.value) {
@@ -29,4 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
         select.classList.add('text-gray-900');
       }
     });
+    // flash message
+    setTimeout(() => {
+        if (flashMessage) {
+            flashMessage.style.display = 'none';
+        }
+    }, 3000);
+
+
 });
