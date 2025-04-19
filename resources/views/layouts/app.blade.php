@@ -14,7 +14,7 @@
             @yield('content')
         </main>
 
-        <footer class="w-full mt-32 mx-auto text-white bg-[#202942] flex flex-col justify-between  items-center py-12 h-[200px] relative">
+        {{-- <footer class="w-full mt-32 mx-auto text-white bg-[#202942] flex flex-col justify-between  items-center py-12 h-[200px] relative">
             <div class="w-[1440px] flex justify-between items-center">
                 <a href="{{ route('homepage') }}" class="flex items-center gap-2 font-bold uppercase tracking-widest text-white text-lg transition duration-500 ease-in-out" id="logotext">
                     <span class="w-7 h-7 flex items-center justify-center text-sm text-black bg-blue-500 rounded-full transition duration-500 ease-in-out" id="logospantext">H</span>
@@ -42,6 +42,6 @@
                     <i class="fa-solid fa-arrow-up-long text-white"></i>
                 </div>
             </a>
-        </footer>
+        </footer> --}}
     </body>
 </html>

@@ -22,4 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
             logoSpanText.classList.remove('logospanscrol');
         }
     });
+    const select = document.getElementById('userType');
+    select.addEventListener('change', function () {
+      if (select.value) {
+        select.classList.remove('text-gray-400');
+        select.classList.add('text-gray-900');
+      }
+    });
 });
