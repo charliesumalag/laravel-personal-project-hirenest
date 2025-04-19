@@ -23,6 +23,11 @@ class Authentication extends Controller
         return view('auth.signup');
     }
 
+    public function login()
+    {
+        return view('auth.login');
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -36,11 +41,32 @@ class Authentication extends Controller
         ]);
 
         $validated['password'] = bcrypt($validated['password']);
-        $user  = User::create($validated);
+        User::create($validated);
 
         return redirect()->back()->with('success', 'Account created successfully!');
     }
 
+    public function authenticate(Request $request)
+    {
+        $validated = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => 'required',
+        ]);
+
+        if (auth()->attempt($validated)) {
+            $request->session()->regenerate();
+            return redirect('/')->with('message', 'You are now login.');
+        };
+    }
+
+    public function logout(Request $request)
+    {
+        auth()->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/')->with('message', 'You have been logout.');
+    }
     /**
      * Display the specified resource.
      */

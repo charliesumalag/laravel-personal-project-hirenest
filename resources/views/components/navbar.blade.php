@@ -10,13 +10,17 @@
                 <li><a href="#" id="nav-menu" class="uppercase tracking-wider transition-all duration-300 ease-in-out hover:text-gray-100">About</a></li>
                 <li><a href="{{ route('jobs.index') }}" id="nav-menu" class="uppercase tracking-wider transition-all duration-300 ease-in-out hover:text-gray-100">Jobs</a></li>
                 <li><a href="#" id="nav-menu" class="uppercase tracking-wider transition-all duration-300 ease-in-out hover:text-gray-100">Blog</a></li>
-                {{-- <li><a href="#" class="uppercase tracking-wider transition-all duration-300 ease-in-out hover:text-gray-100">Employeres Solutions</a></li>
-                <li><a href="#" class="uppercase tracking-wider transition-all duration-300 ease-in-out hover:text-gray-100">Career Resources</a></li> --}}
                 @auth
-                    <a href="/profile" class="px-4 transition-all duration-300 ease-in-out hover:text-gray-100">Profile</a>
-                    <a href="/logout" class="px-4 transition-all duration-300 ease-in-out hover:text-gray-100">Logout</a>
+                    @if(auth()->user()->role === 'employer')
+                        <a href="{{ route('create') }}" class="px-6 py-2 text-xs rounded-md border border-white font-medium text-white uppercase tracking-wide transition-all duration-300 ease-in-out hover:bg-white hover:text-black">
+                            Post a Job
+                        </a>
+                    @endif
+
+                    <a href="/profile" class="uppercase tracking-wider transition-all duration-300 ease-in-out hover:text-gray-100">Profile</a>
+                    <a href="/logout" class="uppercase tracking-wider transition-all duration-300 ease-in-out hover:text-gray-100">Logout</a>
                 @else
-                    <a  href="{{ route('create') }}"  class="px-6 py-2 text-xs rounded-md border  border-white font-medium text-white uppercase tracking-wide transition-all duration-300 ease-in-out hover:bg-white hover:text-black">Post a Job</a>
+                    <a href="{{ route('auth.login') }}" class="uppercase tracking-wider transition-all duration-300 ease-in-out hover:text-gray-100">Login</a>
                 @endauth
             </ul>
 
