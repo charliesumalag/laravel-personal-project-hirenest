@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreJobRequest;
 use App\Models\Job;
 use Illuminate\Http\Request;
 
@@ -12,19 +13,8 @@ class JobController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Job::query();
-        if ($request->filled('title')) {
-            $query->where('title', 'like', '%' . $request->title . '%');
-        }
-        if ($request->filled('location')) {
-            $query->where('location', 'like', '%' . $request->location . '%');
-        }
-
-        if ($request->filled('jobtype')) {
-            $query->where('jobtypes', 'like', '%' . $request->jobtype . '%');
-        }
-
-        $jobs = $query->latest()->paginate(10);
+        $queried = Job::filter($request->only(['title', 'location', 'jobtype']));
+        $jobs = $queried->latest()->paginate(10);
         return view('jobs.index', [
             'jobs' => $jobs,
         ]);
@@ -41,20 +31,10 @@ class JobController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreJobRequest $request)
     {
-
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'location' => 'required|string|max:255',
-            'company' => 'required|string|max:255',
-            'salary' => 'nullable|numeric',
-            'experience' => 'required|string',
-            'jobtypes' => 'required|string',
-        ]);
+        $validated = $request->validated();
         $validated['posted_by'] = auth()->id();
-
 
         Job::create($validated);
         return redirect()->route('jobs.index')->with('success', 'Job posted successfully!');
@@ -65,11 +45,7 @@ class JobController extends Controller
      */
     public function show(Job $job, Request $request)
     {
-        $activeJobTitle = $job->title; // This is the title of the active job
-
-        $jobsSimilar = Job::query()
-            ->where('title', 'like', '%' . $activeJobTitle . '%')  // Match similar titles
-            ->where('id', '!=', $job->id)  // Exclude the current active job
+        $jobsSimilar = Job::similarJob($job)  // Exclude the current active job
             ->latest()
             ->limit(2)
             ->get();
@@ -101,5 +77,21 @@ class JobController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+
+    public function myJobPosting(Request $request)
+    {
+        // $myJobs = Job::where('posted_by', auth()->id())->latest()->paginate();
+        $queried = Job::filter($request->only(['title', 'location', 'jobtype']));
+        $filtered = $queried->where('posted_by', auth()->id());
+
+
+
+        $myJobs = $filtered->latest()->paginate();
+
+        return view('jobs.myjobposting', [
+            'jobs' => $myJobs,
+        ]);
     }
 }

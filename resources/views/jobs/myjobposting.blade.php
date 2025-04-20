@@ -5,11 +5,12 @@
         asset('images/homepage/heroCrop.jpg') }}')" >
         <x-navbar  id="navbar"  class="z-30 flex fixed mx-auto p-5 w-full transition duration-[800ms] ease-in-out "></x-navbar>
         <div class="text-white absolute inset-0 flex flex-col items-center justify-center text-center font-sans -tracking-tight z-10 mt-32">
-            <h1 class="text-3xl font-bold text-white font-sans">Job Vacancies</h1>
+            <h1 class="text-3xl font-bold text-white font-sans">My Job Posting</h1>
             </div>
         </div>
         <div class="w-[1200px] absolute z-10 left-[50%] translate-x-[-50%] bottom-[-50px] border-2 border-gray-200 overflow-hidden rounded-lg">
-            <x-search-form :action="route('jobs.index')" />
+            {{-- <x-search-form :action="'jobs.myjobposting'" /> --}}
+            <x-search-form :action="route('jobs.myjobposting')" />
         </div>
     </x-section>
     <x-section class="my-32">

@@ -9,7 +9,7 @@
                 <p class="w-7/12 leading-7 text-xl text-gray-400">Discover top opportunities in development, design, data, and more. Hirenest connects tech talent with companies that move fast and build big.</p>
             </div>
             <div class="w-[1150px] mt-16 overflow-hidden rounded-lg">
-                <x-search-form/>
+                <x-search-form :action="route('jobs.index')" />
             </div>
         </div>
     </x-section>

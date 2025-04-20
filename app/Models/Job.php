@@ -20,4 +20,18 @@ class Job extends Model
     {
         return $this->belongsTo(User::class, 'posted_by');
     }
+
+    // scopes / query
+    public function scopeSimilarJob($query, Job $job)
+    {
+        return $query->where('title', 'like', '%' . $job->title . '%')
+            ->where('id', '!=', $job->id);;
+    }
+
+    public function scopeFilter($query, $filters)
+    {
+        return $query->when($filters['title'] ?? false, fn($q, $title) => $q->where('title', 'like', '%' . $title . '%'))
+            ->when($filters['location'] ?? false, fn($q, $location) => $q->where('location', 'like', '%' . $location . '%'))
+            ->when($filters['jobtype'] ?? false, fn($q, $jobtypes) => $q->where('jobtypes', 'like', '%' . $jobtypes . '%'));
+    }
 }

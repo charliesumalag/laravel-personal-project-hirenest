@@ -1,4 +1,4 @@
-<form method="GET" action="{{ route('jobs.index') }}" class=" bg-[#F0F3FA] w-full rounded-lg  flex px-4 py-2 gap-2">
+<form method="GET"  action="{{ $action }}" class=" bg-[#F0F3FA] w-full rounded-lg  flex px-4 py-2 gap-2">
     <div class="w-full">
         <i class="fa-solid fa-magnifying-glass text-blue-500"></i>
         <input type="text" name="title" placeholder="search job" class="border-0 h-16 px-2 text-gray-500 bg-[#F0F3FA] font-sans focus:outline-none">
