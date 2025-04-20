@@ -11,16 +11,16 @@
                 <li><a href="{{ route('jobs.index') }}" id="nav-menu" class="uppercase tracking-wider transition-all duration-300 ease-in-out hover:text-gray-100">Jobs</a></li>
                 <li><a href="#" id="nav-menu" class="uppercase tracking-wider transition-all duration-300 ease-in-out hover:text-gray-100">Blog</a></li>
                 @auth
+                    <form method="POST" action="{{ route('auth.logout') }}">
+                        @csrf
+                        <button type="submit" id="nav-menu" class="uppercase tracking-wider transition-all duration-300 ease-in-out hover:text-gray-100">Logout</button>
+                    </form>
                     @if(auth()->user()->role === 'employer')
-                        <a href="{{ route('create') }}" class="px-6 py-2 text-xs rounded-md border border-white font-medium text-white uppercase tracking-wide transition-all duration-300 ease-in-out hover:bg-white hover:text-black">
+                        <a href="{{ route('create') }}" id="post-job" class="px-6 py-2 text-xs rounded-md border border-white font-medium text-white uppercase tracking-wide transition-all duration-300 ease-in-out">
                             Post a Job
                         </a>
                     @endif
-                    <a href="/profile" class="uppercase tracking-wider transition-all duration-300 ease-in-out hover:text-gray-100">Profile</a>
-                    <form method="POST" action="{{ route('auth.logout') }}">
-                        @csrf
-                        <button type="submit" class="uppercase tracking-wider transition-all duration-300 ease-in-out hover:text-gray-100">Logout</button>
-                    </form>
+
                 @else
                     <a href="{{ route('auth.login') }}" class="uppercase tracking-wider transition-all duration-300 ease-in-out hover:text-gray-100">Login</a>
                 @endauth
